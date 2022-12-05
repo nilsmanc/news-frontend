@@ -9,14 +9,12 @@ import '../styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Provider store={store}>
-        <Layout>
-          <div className={styles.wrapper}>
-            <Component {...pageProps} />
-          </div>
-        </Layout>
-      </Provider>
-    </>
+    <Provider store={store}>
+      <Layout>
+        <div className={styles.wrapper}>
+          <Component {...pageProps} />
+        </div>
+      </Layout>
+    </Provider>
   )
 }
