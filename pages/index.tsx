@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import NewsItem from '../components/NewsItem'
 import { fetchNews } from '../redux/asyncActions'
 import { newsSelector } from '../redux/slices/news'
 import { useAppDispatch } from '../redux/store'
@@ -15,12 +16,7 @@ const Main = () => {
   return (
     <div>
       {news.map((item) => {
-        return (
-          <div key={item.text}>
-            <div>{item.title}</div>
-            <div>{item.text}</div>
-          </div>
-        )
+        return <NewsItem title={item.title} text={item.text} />
       })}
     </div>
   )
