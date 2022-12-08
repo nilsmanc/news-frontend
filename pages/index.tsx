@@ -1,18 +1,7 @@
-import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import instance from '../axios'
 import NewsItem from '../components/NewsItem'
-import { fetchNews } from '../redux/asyncActions'
-import { newsSelector } from '../redux/slices/news'
-import { useAppDispatch } from '../redux/store'
 
-const Main = () => {
-  const dispatch = useAppDispatch()
-  const news = useSelector(newsSelector)
-
-  useEffect(() => {
-    dispatch(fetchNews())
-  }, [])
-
+export default function Main({ news }) {
   return (
     <div>
       {news.map((item) => {
@@ -22,4 +11,10 @@ const Main = () => {
   )
 }
 
-export default Main
+export async function getServerSideProps() {
+  const { data } = await instance.get('/news')
+
+  return {
+    props: { news: data },
+  }
+}
