@@ -1,15 +1,17 @@
 import instance from '../axios'
 import NewsItem from '../components/NewsItem'
 
-export default function Main({ news }) {
+const Main = ({ news }) => {
   return (
     <div>
       {news.map((item) => {
-        return <NewsItem title={item.title} text={item.text} />
+        return <NewsItem key={item._id} title={item.title} text={item.text} id={item._id} />
       })}
     </div>
   )
 }
+
+export default Main
 
 export async function getServerSideProps() {
   const { data } = await instance.get('/news')
