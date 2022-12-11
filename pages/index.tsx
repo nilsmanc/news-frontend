@@ -1,11 +1,21 @@
 import instance from '../axios'
+import MainGrid from '../components/MainGrid'
 import NewsItem from '../components/NewsItem'
 
 const Main = ({ news }) => {
   return (
     <div>
+      <MainGrid news={news} />
       {news.map((item) => {
-        return <NewsItem key={item._id} title={item.title} text={item.text} id={item._id} />
+        return (
+          <NewsItem
+            key={item._id}
+            title={item.title}
+            text={item.text}
+            id={item._id}
+            image={item.image}
+          />
+        )
       })}
     </div>
   )

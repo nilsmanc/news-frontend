@@ -7,7 +7,7 @@ import store from '../redux/store'
 import styles from '../styles/App.module.scss'
 import '../styles/globals.css'
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
       <Layout>
@@ -18,3 +18,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </Provider>
   )
 }
+
+export default App

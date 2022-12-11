@@ -1,0 +1,24 @@
+.wrapper {
+  display: grid;
+  grid-template-areas:
+    'm t t'
+    'm b r';
+  grid-gap: 20px;
+  margin-top: 20px;
+}
+
+.main {
+  grid-area: m;
+}
+
+.rightTop {
+  grid-area: t;
+}
+
+.rigthBottomLeft {
+  grid-area: b;
+}
+
+.rightBottomRight {
+  grid-area: r;
+}

@@ -1,12 +1,13 @@
-import { Button } from '@mui/material'
 import styles from '../styles/Header.module.scss'
 
 const Header = () => {
   return (
     <div className={styles.wrapper}>
-      <div>logo</div>
-      <Button>Main</Button>
-      <Button>Login</Button>
+      <button className={styles.button}>Home</button>
+      <button className={styles.button}>Culture</button>
+      <button className={styles.button}>Politics</button>
+      <button className={styles.button}>Sport</button>
+      <button className={styles.button}>Reviews</button>
     </div>
   )
 }
