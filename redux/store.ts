@@ -1,11 +1,9 @@
 import { useDispatch } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
-import { newsReducer } from './slices/news'
 import { commentsReducer } from './slices/comments'
 
 const store = configureStore({
   reducer: {
-    news: newsReducer,
     comments: commentsReducer,
   },
   middleware: (getDefaultMiddleware) =>

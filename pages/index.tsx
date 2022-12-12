@@ -1,11 +1,17 @@
 import instance from '../axios'
+import Heading from '../components/Heading'
 import MainGrid from '../components/MainGrid'
 import NewsItem from '../components/NewsItem'
+import SocialMedia from '../components/SocialMedia'
+import Subscribe from '../components/Subscribe'
+
+import styles from '../styles/Main.module.scss'
 
 const Main = ({ news }) => {
   return (
     <div>
       <MainGrid news={news} />
+      <Heading title={'Popular'} />
       {news.map((item) => {
         return (
           <NewsItem
@@ -17,6 +23,9 @@ const Main = ({ news }) => {
           />
         )
       })}
+      <Subscribe />
+      <Heading title={'Follow us'} />
+      <SocialMedia />
     </div>
   )
 }
