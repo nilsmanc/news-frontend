@@ -3,6 +3,7 @@ export type NewsType = {
   title: string
   text: string
   image: string
+  category: string
 }
 
 export type CommentsType = {

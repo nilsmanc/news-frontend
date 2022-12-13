@@ -1,0 +1,33 @@
+.content {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 30px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.box {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 4%), 0 0 2px rgb(0 0 0 / 6%), 0 0 1px rgb(0 0 0 / 4%);
+}
+
+.img {
+  width: 150px;
+  height: 100px;
+}
+
+.content img {
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.title {
+  padding: 10px;
+  text-align: center;
+  color: black;
+  margin: 0;
+  font-weight: normal;
+}

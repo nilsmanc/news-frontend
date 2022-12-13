@@ -1,0 +1,35 @@
+.list {
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px -2px gray;
+  border-radius: 3px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-areas:
+    'm m'
+    'p s'
+    'p c'
+    'd d';
+  grid-gap: 40px;
+}
+
+.main {
+  grid-area: m;
+}
+
+.popular {
+  grid-area: p;
+}
+
+.social {
+  grid-area: s;
+}
+
+.categories {
+  grid-area: c;
+}
+
+.discover {
+  grid-area: d;
+}

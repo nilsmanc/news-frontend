@@ -1,15 +1,26 @@
 .wrapper {
+  display: grid;
+  grid-template-areas:
+    'i t'
+    'i e';
   text-align: center;
-  padding: 20px;
-  margin: 20px;
+  justify-items: start;
   background-color: white;
   color: black;
 }
 
+.image {
+  grid-area: i;
+}
+
 .title {
+  grid-area: t;
+  margin: 20px;
   font-size: 40px;
 }
 
 .text {
+  grid-area: e;
+  margin: 0 20px;
   text-align: justify;
 }

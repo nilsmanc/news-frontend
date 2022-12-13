@@ -19,7 +19,7 @@ const Comments: React.FC<CommentsType> = ({ id }) => {
   return (
     <>
       {comments.map((comment) => (
-        <div>{comment.text}</div>
+        <div key={comment._id}>{comment.text}</div>
       ))}
     </>
   )
