@@ -4,6 +4,8 @@ import { fetchComments } from '../redux/asyncActions'
 import { commentsSelector } from '../redux/slices/comments'
 import { useAppDispatch } from '../redux/store'
 
+import styles from '../styles/Comments.module.scss'
+
 type CommentsType = {
   id: string
 }
@@ -19,7 +21,9 @@ const Comments: React.FC<CommentsType> = ({ id }) => {
   return (
     <>
       {comments.map((comment) => (
-        <div key={comment._id}>{comment.text}</div>
+        <div className={styles.comment} key={comment._id}>
+          {comment.text}
+        </div>
       ))}
     </>
   )

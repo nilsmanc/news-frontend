@@ -1,3 +1,26 @@
 .wrapper {
   color: black;
+  display: grid;
+  grid-template-areas:
+    'i t'
+    'i e'
+    'c c';
+  grid-gap: 50px;
+  grid-template-rows: 1fr 5fr;
+}
+
+.title {
+  grid-area: t;
+}
+
+.text {
+  grid-area: e;
+}
+
+.image {
+  grid-area: i;
+}
+
+.comments {
+  grid-area: c;
 }
