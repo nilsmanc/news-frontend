@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchComments, fetchNews } from '../asyncActions'
+import { fetchComments } from '../asyncActions'
 import { RootState } from '../store'
 
 const initialState = {
