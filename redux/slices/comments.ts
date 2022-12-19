@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchComments } from '../asyncActions'
+import { fetchComments, fetchRemoveComment } from '../asyncActions'
 import { RootState } from '../store'
 
 const initialState = {
@@ -19,6 +19,9 @@ const commentsSlice = createSlice({
     })
     builder.addCase(fetchComments.rejected, (state) => {
       state.items = []
+    })
+    builder.addCase(fetchRemoveComment.pending, (state, action) => {
+      state.items = state.items.filter((obj: any) => obj._id !== action.meta.arg)
     })
   },
 })

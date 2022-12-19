@@ -8,10 +8,10 @@ const LoginPage = () => {
 
   const onSubmit = async (values) => {
     const data = await dispatch(fetchLogin(values))
-    console.log(data)
+    console.log(values)
 
     if ('access_token' in data.payload.data) {
-      window.localStorage.setItem('access_token', data.payload.data.access_token)
+      window.localStorage.setItem('auth', data.payload.data)
     }
   }
 

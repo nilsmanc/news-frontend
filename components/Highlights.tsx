@@ -1,4 +1,4 @@
-import { NewsType } from '../types/types'
+import { NewsType } from '../types'
 import NewsCard from './NewsCard'
 
 import styles from '../styles/Highlights.module.scss'
@@ -14,7 +14,7 @@ const Highlights: React.FC<HighlightsType> = ({ news }) => {
         {news.map((item: NewsType) => {
           return (
             <>
-              <NewsCard key={item._id} item={item} />
+              <NewsCard item={item} />
             </>
           )
         })}
