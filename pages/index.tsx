@@ -6,9 +6,9 @@ import NewsItem from '../components/NewsItem'
 import SocialMedia from '../components/SocialMedia'
 import Subscribe from '../components/Subscribe'
 import { NewsType } from '../types'
+import Highlights from '../components/Highlights'
 
 import styles from '../styles/Main.module.scss'
-import Highlights from '../components/Highlights'
 
 const Main = ({ news }) => {
   return (

@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form'
+
 import { fetchLogin } from '../redux/asyncActions'
 import { useAppDispatch } from '../redux/store'
+
 import styles from '../styles/AuthPage.module.scss'
 
 const LoginPage = () => {
@@ -8,10 +10,10 @@ const LoginPage = () => {
 
   const onSubmit = async (values) => {
     const data = await dispatch(fetchLogin(values))
-    console.log(values)
+    console.log(data)
 
-    if ('access_token' in data.payload.data) {
-      window.localStorage.setItem('auth', data.payload.data)
+    if (data.payload.data) {
+      window.localStorage.setItem('authToken', data.payload.data)
     }
   }
 

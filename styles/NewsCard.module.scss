@@ -16,6 +16,11 @@
 .box {
   position: relative;
   padding: 30px;
+  transition: 0.1s ease-in;
+
+  &:hover {
+    transform: scale(0.99);
+  }
 }
 
 .box:nth-child(1) {

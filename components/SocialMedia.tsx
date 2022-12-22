@@ -1,7 +1,8 @@
-import styles from '../styles/SocialMedia.module.scss'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import YouTubeIcon from '@mui/icons-material/YouTube'
 import PinterestIcon from '@mui/icons-material/Pinterest'
+
+import styles from '../styles/SocialMedia.module.scss'
 
 const SocialMedia = () => {
   return (

@@ -6,7 +6,7 @@ export type NewsType = {
   category: string
 }
 
-export type CommentsType = {
+export type CommentType = {
   text: string
   newsItem: string
   _id: string
@@ -15,21 +15,19 @@ export type CommentsType = {
   __v: number
 }
 
-export interface IBaseEffectArgs {
-  url: string
-  token: string
-}
-
-export interface IRefreshToken extends IBaseEffectArgs {
+export type AuthParams = {
   username: string
+  password: string
 }
 
-export interface IDeleteComment extends IBaseEffectArgs {
-  id: string | number
-}
-
-export interface IHandleAxiosErrorPayload {
+export interface AuthData {
+  meta: {
+    arg: AuthParams
+    requestId: string
+    requestStatus: string
+  }
+  payload: {
+    data: string
+  }
   type: string
-  getCosts?: Partial<IBaseEffectArgs>
-  deleteComment?: Partial<IDeleteComment>
 }

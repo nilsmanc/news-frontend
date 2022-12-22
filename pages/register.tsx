@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form'
+
 import { fetchRegister } from '../redux/asyncActions'
 import { useAppDispatch } from '../redux/store'
+
 import styles from '../styles/AuthPage.module.scss'
 
 const RegisterPage = () => {

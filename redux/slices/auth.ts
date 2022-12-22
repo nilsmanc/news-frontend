@@ -1,6 +1,8 @@
-import { RootState } from './../store'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { fetchLogin, fetchRegister, fetchRefreshToken } from '../asyncActions'
+
+import { RootState } from './../store'
+import { fetchLogin, fetchRegister } from '../asyncActions'
+import { AuthData } from '../../types'
 
 const initialState = {
   data: null,
@@ -18,7 +20,7 @@ const authSlice = createSlice({
     builder.addCase(fetchLogin.pending, (state) => {
       state.data = null
     })
-    builder.addCase(fetchLogin.fulfilled, (state, action: PayloadAction<any>) => {
+    builder.addCase(fetchLogin.fulfilled, (state, action: PayloadAction<AuthData>) => {
       state.data = action.payload
     })
     builder.addCase(fetchLogin.rejected, (state) => {
@@ -27,20 +29,11 @@ const authSlice = createSlice({
     builder.addCase(fetchRegister.pending, (state) => {
       state.data = null
     })
-    builder.addCase(fetchRegister.fulfilled, (state, action: PayloadAction<any>) => {
+    builder.addCase(fetchRegister.fulfilled, (state, action: PayloadAction<AuthData>) => {
       state.data = action.payload
     })
     builder.addCase(fetchRegister.rejected, (state) => {
       state.data = null
-    })
-    builder.addCase(fetchRefreshToken.pending, (state) => {
-      state.data.accessToken = null
-    })
-    builder.addCase(fetchRefreshToken.fulfilled, (state, action) => {
-      state.data.accessToken = action.payload
-    })
-    builder.addCase(fetchRefreshToken.rejected, (state) => {
-      state.data.accessToken = null
     })
   },
 })
