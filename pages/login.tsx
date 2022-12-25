@@ -1,3 +1,4 @@
+import { setCookie } from 'nookies'
 import { useForm } from 'react-hook-form'
 
 import { fetchLogin } from '../redux/asyncActions'
@@ -11,7 +12,10 @@ const LoginPage = () => {
   const onSubmit = async (values) => {
     const data = await dispatch(fetchLogin(values))
     console.log(data)
-
+    setCookie(null, 'token', data.payload.data, {
+      maxAge: 30 * 24 * 60 * 60,
+      path: '/',
+    })
     if (data.payload.data) {
       window.localStorage.setItem('authToken', data.payload.data)
     }

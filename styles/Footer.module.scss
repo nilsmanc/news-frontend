@@ -29,11 +29,13 @@
   display: flex;
   margin-bottom: 30px;
 }
+
 .item img {
   width: 70px;
   height: 70px;
   object-fit: cover;
 }
+
 .item p {
   padding: 10px 20px;
 }
@@ -51,9 +53,11 @@
   position: relative;
   cursor: pointer;
 }
+
 .footer ul li:nth-last-child(1) {
   border-bottom: none;
 }
+
 .footer ul li span::before {
   content: '>';
   top: 0;

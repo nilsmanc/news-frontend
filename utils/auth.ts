@@ -9,16 +9,7 @@ export const removeUser = () => {
 }
 
 export const getAuthDataFromLS = () => {
-  try {
-    const lsData = localStorage.getItem('authToken')
+  const lsData = localStorage.getItem('authToken')
 
-    if (!lsData) {
-      removeUser()
-      return
-    }
-
-    return lsData
-  } catch (error) {
-    removeUser()
-  }
+  return lsData
 }

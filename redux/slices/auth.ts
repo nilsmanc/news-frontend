@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { RootState } from './../store'
 import { fetchLogin, fetchRegister } from '../asyncActions'
 import { AuthData } from '../../types'
 
@@ -39,9 +38,5 @@ const authSlice = createSlice({
 })
 
 export const { logout } = authSlice.actions
-
-export const authSelector = (state: RootState) => Boolean(state.auth.data)
-
-export const authDataSelector = (state: RootState) => state.auth.data
 
 export const authReducer = authSlice.reducer

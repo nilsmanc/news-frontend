@@ -1,5 +1,43 @@
 .comment {
+  display: grid;
+  grid-template-areas:
+    'a c d'
+    'a t d';
+  grid-template-columns: 100px 5fr;
   margin-bottom: 20px;
   box-shadow: 0 4px 6px -2px gray;
   border-radius: 3px;
+  min-height: 70px;
+}
+
+.avatar {
+  grid-area: a;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  align-self: center;
+}
+
+.delete {
+  grid-area: d;
+  justify-self: end;
+  transition: width 0.5s ease;
+  width: 50px;
+  &:hover {
+    width: 70px;
+  }
+}
+
+.text {
+  grid-area: t;
+}
+
+.createdAt {
+  grid-area: c;
+  align-self: center;
+  font-size: 12px;
+}
+
+.commentInput {
+  width: 100%;
 }

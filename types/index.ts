@@ -6,6 +6,8 @@ export type NewsType = {
   category: string
 }
 
+export type UserType = {}
+
 export type CommentType = {
   text: string
   newsItem: string
