@@ -1,24 +1,22 @@
 import { setCookie } from 'nookies'
 import { useForm } from 'react-hook-form'
-
-import { fetchLogin } from '../redux/asyncActions'
+import { setUserData } from '../redux/slices/auth'
 import { useAppDispatch } from '../redux/store'
+import { Api } from '../utils/api'
 
 import styles from '../styles/AuthPage.module.scss'
 
 const LoginPage = () => {
   const dispatch = useAppDispatch()
-
   const onSubmit = async (values) => {
-    const data = await dispatch(fetchLogin(values))
-    console.log(data)
-    setCookie(null, 'token', data.payload.data, {
+    const data = await Api().user.login(values)
+
+    dispatch(setUserData(values))
+
+    setCookie(null, 'token', data as any, {
       maxAge: 30 * 24 * 60 * 60,
       path: '/',
     })
-    if (data.payload.data) {
-      window.localStorage.setItem('authToken', data.payload.data)
-    }
   }
 
   const {

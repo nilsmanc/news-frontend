@@ -1,13 +1,10 @@
 import { useForm } from 'react-hook-form'
 
-import { fetchRegister } from '../redux/asyncActions'
-import { useAppDispatch } from '../redux/store'
+import { Api } from '../utils/api'
 
 import styles from '../styles/AuthPage.module.scss'
 
 const RegisterPage = () => {
-  const dispatch = useAppDispatch()
-
   const {
     register,
     handleSubmit,
@@ -21,7 +18,7 @@ const RegisterPage = () => {
   })
 
   const onSubmit = async (values) => {
-    await dispatch(fetchRegister(values))
+    await Api().user.register(values)
   }
 
   return (

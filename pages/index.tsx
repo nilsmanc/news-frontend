@@ -1,4 +1,3 @@
-import instance from '../axios'
 import Categories from '../components/Categories'
 import Discover from '../components/Discover'
 import Heading from '../components/Heading'
@@ -7,6 +6,7 @@ import SocialMedia from '../components/SocialMedia'
 import Subscribe from '../components/Subscribe'
 import { NewsType } from '../types'
 import Highlights from '../components/Highlights'
+import { Api } from '../utils/api'
 
 import styles from '../styles/Main.module.scss'
 
@@ -49,10 +49,21 @@ const Main = ({ news }) => {
 
 export default Main
 
-export async function getServerSideProps() {
-  const { data } = await instance.get('/news')
+export const getServerSideProps = async (ctx) => {
+  try {
+    const news = await Api().news.getAll()
 
+    return {
+      props: {
+        news,
+      },
+    }
+  } catch (err) {
+    console.log(err)
+  }
   return {
-    props: { news: data },
+    props: {
+      news: null,
+    },
   }
 }

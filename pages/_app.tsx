@@ -1,13 +1,19 @@
 import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 
-import store from '../redux/store'
+import { wrapper } from '../redux/store'
 import Layout from '../components/Layout'
+import { setUserData } from '../redux/slices/auth'
+import { Api } from '../utils/api'
 
 import styles from '../styles/App.module.scss'
 import '../styles/globals.scss'
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, ...rest }: AppProps) => {
+  const { store, props } = wrapper.useWrappedStore(rest)
+
+  const { pageProps } = props
+
   return (
     <Provider store={store}>
       <Layout>
@@ -18,5 +24,19 @@ const App = ({ Component, pageProps }: AppProps) => {
     </Provider>
   )
 }
+
+App.getInitialProps = wrapper.getInitialAppProps((store) => async ({ ctx, Component }) => {
+  try {
+    const userData = await Api(ctx).user.getMe()
+    console.log(userData)
+    store.dispatch(setUserData(userData))
+  } catch (err) {
+    console.log(err)
+  }
+
+  return {
+    pageProps: Component.getInitialProps ? await Component.getInitialProps({ ...ctx, store }) : {},
+  }
+})
 
 export default App

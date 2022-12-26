@@ -6,15 +6,19 @@ export type NewsType = {
   category: string
 }
 
-export type UserType = {}
+export type UserType = {
+  _id: string
+  username: string
+  avatarURL: string
+}
 
 export type CommentType = {
   text: string
-  newsItem: string
+  newsItem: NewsType
+  user: UserType
   _id: string
   createdAt: string
   updatedAt: string
-  __v: number
 }
 
 export type AuthParams = {
@@ -32,4 +36,9 @@ export interface AuthData {
     data: string
   }
   type: string
+}
+
+export type AuthDto = {
+  username: string
+  password: string
 }

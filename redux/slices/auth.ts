@@ -1,7 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
-import { fetchLogin, fetchRegister } from '../asyncActions'
-import { AuthData } from '../../types'
+import { RootState } from './../store'
+import { HYDRATE } from 'next-redux-wrapper'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   data: null,
@@ -11,32 +10,25 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    setUserData: (state, action) => {
+      state.data = action.payload
+    },
     logout: (state) => {
       state.data = null
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(fetchLogin.pending, (state) => {
-      state.data = null
-    })
-    builder.addCase(fetchLogin.fulfilled, (state, action: PayloadAction<AuthData>) => {
-      state.data = action.payload
-    })
-    builder.addCase(fetchLogin.rejected, (state) => {
-      state.data = null
-    })
-    builder.addCase(fetchRegister.pending, (state) => {
-      state.data = null
-    })
-    builder.addCase(fetchRegister.fulfilled, (state, action: PayloadAction<AuthData>) => {
-      state.data = action.payload
-    })
-    builder.addCase(fetchRegister.rejected, (state) => {
-      state.data = null
-    })
+  extraReducers: {
+    [HYDRATE]: (state, action) => {
+      return {
+        ...state,
+        ...action.payload.auth,
+      }
+    },
   },
 })
 
-export const { logout } = authSlice.actions
+export const { logout, setUserData } = authSlice.actions
+
+export const authDataSelector = (state: RootState) => state.auth.data
 
 export const authReducer = authSlice.reducer

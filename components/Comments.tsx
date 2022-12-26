@@ -1,30 +1,26 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
-
-import { fetchComments, fetchRemoveComment } from '../redux/asyncActions'
-import { addComment, commentsSelector } from '../redux/slices/comments'
-import { useAppDispatch } from '../redux/store'
 import { Avatar, Button, TextField } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
-import instance from '../axios'
+
+import { Api } from '../utils/api'
+import { useAppDispatch } from '../redux/store'
 
 import styles from '../styles/Comments.module.scss'
+import { CommentType } from '../types'
 
 type CommentsProps = {
   id: string
+  newsComments: CommentType[]
+  refreshData: () => void
 }
 
-const Comments: React.FC<CommentsProps> = ({ id }) => {
+const Comments: React.FC<CommentsProps> = ({ id, newsComments, refreshData }) => {
   const [text, setText] = useState('')
-  const [token, setToken] = useState('')
-
-  const comments = useSelector(commentsSelector)
-  console.log(comments)
-
-  const dispatch = useAppDispatch()
 
   const handleDelete = (id: string) => {
-    dispatch(fetchRemoveComment(id))
+    Api().comment.remove(id)
+    refreshData()
   }
 
   const sendHandler = async () => {
@@ -34,12 +30,11 @@ const Comments: React.FC<CommentsProps> = ({ id }) => {
       const comment = {
         text,
         newsItem,
-        token,
       }
 
-      await instance.post('/comments', comment)
+      await Api().comment.create(comment)
 
-      dispatch(addComment(comment))
+      refreshData()
 
       setText('')
     } catch (err) {
@@ -48,23 +43,14 @@ const Comments: React.FC<CommentsProps> = ({ id }) => {
     }
   }
 
-  useEffect(() => {
-    dispatch(fetchComments(id))
-
-    if (typeof window !== 'undefined') {
-      const authData = window.localStorage.getItem('token')
-      setToken(authData)
-    }
-  }, [])
-
-  const formatDate = (date) => {
+  const formatDate = (date: string) => {
     const commentDate = new Date(date)
     return `${commentDate.toLocaleDateString()} ${commentDate.toLocaleTimeString()}`
   }
 
   return (
     <>
-      {comments.map((comment) => (
+      {newsComments.map((comment) => (
         <div className={styles.comment} key={comment._id}>
           <Avatar variant='rounded' className={styles.avatar} src={comment.user?.avatarURL} />
           <div className={styles.text}>{comment.text}</div>

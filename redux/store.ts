@@ -1,23 +1,28 @@
+import { createWrapper } from 'next-redux-wrapper'
 import { useDispatch } from 'react-redux'
-import { configureStore } from '@reduxjs/toolkit'
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
 
-import { commentsReducer } from './slices/comments'
 import { authReducer } from './slices/auth'
 
-const store = configureStore({
-  reducer: {
-    comments: commentsReducer,
-    auth: authReducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
-})
+export function makeStore() {
+  return configureStore({
+    reducer: {
+      auth: authReducer,
+    },
+  })
+}
 
-export type RootState = ReturnType<typeof store.getState>
+export const store = makeStore()
 
-type AppDispatch = typeof store.dispatch
+export type RootStore = ReturnType<typeof makeStore>
+export type RootState = ReturnType<RootStore['getState']>
+export type AppDispatch = typeof store.dispatch
 export const useAppDispatch = () => useDispatch<AppDispatch>()
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>
 
-export default store
+export const wrapper = createWrapper<RootStore>(makeStore)

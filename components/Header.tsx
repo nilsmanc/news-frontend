@@ -1,19 +1,21 @@
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
 
-import { logout } from '../redux/slices/auth'
+import { authDataSelector, logout } from '../redux/slices/auth'
 import { useAppDispatch } from '../redux/store'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
 
 import styles from '../styles/Header.module.scss'
+import { destroyCookie } from 'nookies'
 
 const links = ['Home', 'Culture', 'Politics', 'Sport', 'Reviews']
 const Header = () => {
   const dispatch = useAppDispatch()
+  const userData = useSelector(authDataSelector)
 
   const logoutHandler = () => {
     dispatch(logout())
-    window.localStorage.removeItem('authToken')
+    destroyCookie(undefined, 'token')
   }
 
   return (
@@ -32,6 +34,7 @@ const Header = () => {
       <button className={styles.button} onClick={logoutHandler}>
         <ExitToAppIcon />
       </button>
+      <div>{userData?.username}</div>
     </div>
   )
 }
