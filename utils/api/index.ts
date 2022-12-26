@@ -17,7 +17,7 @@ export const Api = (ctx?: NextPageContext | GetServerSidePropsContext): ApiRetur
   const token = cookies.token
 
   const instance = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: process.env.REACT_APP_API_URL,
     headers: {
       Authorization: token,
     },

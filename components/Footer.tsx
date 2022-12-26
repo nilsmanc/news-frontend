@@ -21,14 +21,14 @@ const Footer = () => {
             <h3>HOT</h3>
             <div className={styles.item}>
               <img src='../static/discover/d1.jpg' alt='' />
-              <p>Google To Boost Android Security In Few Days</p>
+              <p>Tencent chief blasts managers in fiery townhall - sources</p>
             </div>
           </div>
           <div>
             <h3>FEATURED</h3>
             <div className={styles.item}>
               <img src='../static/discover/d1.jpg' alt='' />
-              <p>US Promises to give Intel aid to locate the soldiers</p>
+              <p>Samsung Elec to expand chip production at largest plant next year - media</p>
             </div>
           </div>
           <div>
