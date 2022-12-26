@@ -45,7 +45,7 @@ const LoginPage = () => {
       </form>
       <div>
         <span className={styles.question}>
-          Don't have account?{' '}
+          Don&apos;t have an account?{' '}
           <Link className={styles.redirect} href={'/register'}>
             Sign up
           </Link>
