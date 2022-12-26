@@ -1,15 +1,12 @@
 import { useForm } from 'react-hook-form'
+import Link from 'next/link'
 
 import { Api } from '../utils/api'
 
 import styles from '../styles/AuthPage.module.scss'
 
 const RegisterPage = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     defaultValues: {
       username: '',
       password: '',
@@ -36,7 +33,12 @@ const RegisterPage = () => {
         <button>Sign Up</button>
       </form>
       <div>
-        <span className={styles.question}>Have an account? Sign in</span>
+        <span className={styles.question}>
+          Have an account?{' '}
+          <Link className={styles.redirect} href={'/login'}>
+            Sign in
+          </Link>
+        </span>
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
-import { RootState } from './../store'
 import { HYDRATE } from 'next-redux-wrapper'
 import { createSlice } from '@reduxjs/toolkit'
+
+import { RootState } from './../store'
 
 const initialState = {
   data: null,

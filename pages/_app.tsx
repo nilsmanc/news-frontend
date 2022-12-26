@@ -28,7 +28,7 @@ const App = ({ Component, ...rest }: AppProps) => {
 App.getInitialProps = wrapper.getInitialAppProps((store) => async ({ ctx, Component }) => {
   try {
     const userData = await Api(ctx).user.getMe()
-    console.log(userData)
+
     store.dispatch(setUserData(userData))
   } catch (err) {
     console.log(err)

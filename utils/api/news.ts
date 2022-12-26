@@ -12,4 +12,9 @@ export const NewsApi = (instance: AxiosInstance) => ({
     const { data } = await instance.get<NewsType>(`/news/${id}`)
     return data
   },
+
+  async getByCategory(category: string) {
+    const { data } = await instance.get<NewsType[]>('/news')
+    return data
+  },
 })

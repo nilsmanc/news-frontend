@@ -3,6 +3,13 @@
   margin-bottom: 10px;
   color: #fff;
   width: 400px;
+  @media (max-width: 1280px) {
+    margin-inline: auto;
+  }
+
+  @media (max-width: 450px) {
+    width: 300px;
+  }
 }
 
 .box span {

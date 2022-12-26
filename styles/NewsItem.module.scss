@@ -7,10 +7,23 @@
   justify-items: start;
   background-color: white;
   color: black;
+
+  @media (max-width: 400px) {
+    grid-template-areas:
+      'i'
+      't'
+      'e';
+    grid-template-columns: 1fr;
+    margin-bottom: 20px;
+  }
 }
 
 .image {
   grid-area: i;
+
+  @media (max-width: 400px) {
+    width: 300px;
+  }
 }
 
 .title {
@@ -23,4 +36,8 @@
   grid-area: e;
   margin: 0 20px;
   text-align: justify;
+
+  @media (max-width: 768px) {
+    margin: 20px;
+  }
 }

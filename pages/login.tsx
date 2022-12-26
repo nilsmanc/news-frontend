@@ -1,8 +1,10 @@
 import { setCookie } from 'nookies'
 import { useForm } from 'react-hook-form'
+
 import { setUserData } from '../redux/slices/auth'
 import { useAppDispatch } from '../redux/store'
 import { Api } from '../utils/api'
+import Link from 'next/link'
 
 import styles from '../styles/AuthPage.module.scss'
 
@@ -13,17 +15,13 @@ const LoginPage = () => {
 
     dispatch(setUserData(values))
 
-    setCookie(null, 'token', data as any, {
+    setCookie(null, 'token', data, {
       maxAge: 30 * 24 * 60 * 60,
       path: '/',
     })
   }
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     defaultValues: {
       username: '',
       password: '',
@@ -46,7 +44,12 @@ const LoginPage = () => {
         <button>Sign In</button>
       </form>
       <div>
-        <span className={styles.question}>Don't have account? Sign up</span>
+        <span className={styles.question}>
+          Don't have account?{' '}
+          <Link className={styles.redirect} href={'/register'}>
+            Sign up
+          </Link>
+        </span>
       </div>
     </div>
   )

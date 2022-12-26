@@ -1,5 +1,6 @@
 .wrapper {
   color: black;
+  padding: 0 50px;
   display: grid;
   grid-template-areas:
     'i t'
@@ -7,6 +8,16 @@
     'c c';
   grid-gap: 50px;
   grid-template-rows: 1fr 5fr;
+
+  @media (max-width: 1280px) {
+    grid-template-areas:
+      'i'
+      't'
+      'e'
+      'c';
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 50px;
+  }
 }
 
 .title {
@@ -19,6 +30,11 @@
 
 .image {
   grid-area: i;
+  @media (max-width: 1280px) {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
 }
 
 .comments {

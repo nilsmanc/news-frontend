@@ -9,7 +9,7 @@ export const UserApi = (instance: AxiosInstance) => ({
   },
 
   async login(dto: AuthDto) {
-    const { data } = await instance.post<AuthDto, { data: AuthData }>('/auth/login', dto)
+    const { data } = await instance.post<AuthDto, { data: string }>('/auth/login', dto)
     return data
   },
 

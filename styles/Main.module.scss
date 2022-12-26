@@ -2,6 +2,10 @@
   margin-bottom: 20px;
   box-shadow: 0 4px 6px -2px gray;
   border-radius: 3px;
+  @media (max-width: 400px) {
+    width: 300px;
+    margin: 0 auto;
+  }
 }
 
 .wrapper {
@@ -12,6 +16,16 @@
     'p c'
     'd d';
   grid-gap: 40px;
+
+  @media (max-width: 1280px) {
+    grid-template-areas:
+      'm'
+      'p'
+      's'
+      'c'
+      'd';
+  }
+  grid-template-columns: 1fr;
 }
 
 .main {

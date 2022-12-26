@@ -1,13 +1,11 @@
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
 import { Avatar, Button, TextField } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
 
 import { Api } from '../utils/api'
-import { useAppDispatch } from '../redux/store'
+import { CommentType } from '../types'
 
 import styles from '../styles/Comments.module.scss'
-import { CommentType } from '../types'
 
 type CommentsProps = {
   id: string
