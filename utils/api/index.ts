@@ -20,6 +20,8 @@ export const Api = (ctx?: NextPageContext | GetServerSidePropsContext): ApiRetur
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
       Authorization: token,
+      Accept: 'application/json',
+      'Accept-Encoding': 'identity',
     },
   })
 
