@@ -23,6 +23,7 @@
   justify-self: end;
   transition: width 0.5s ease;
   width: 50px;
+  cursor: pointer;
   &:hover {
     width: 70px;
   }

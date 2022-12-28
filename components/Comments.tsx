@@ -1,43 +1,39 @@
-import { useState } from 'react'
-import { Avatar, Button, TextField } from '@mui/material'
+import { useSelector } from 'react-redux'
+import { Avatar } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
 
-import { Api } from '../utils/api'
 import { CommentType } from '../types'
+import { authDataSelector } from '../redux/slices/auth'
+import { useComments } from '../hooks/useComments'
+import { AddCommentForm } from './AddCommentForm'
+import { Api } from '../utils/api'
 
 import styles from '../styles/Comments.module.scss'
 
 type CommentsProps = {
-  id: string
-  newsComments: CommentType[]
-  refreshData: () => void
+  newsItem: string
 }
 
-const Comments: React.FC<CommentsProps> = ({ id, newsComments, refreshData }) => {
-  const [text, setText] = useState('')
+const Comments: React.FC<CommentsProps> = ({ newsItem }) => {
+  const isAuth = useSelector(authDataSelector)
+  const { comments, setComments } = useComments(newsItem)
+  console.log(comments)
 
-  const handleDelete = (id: string) => {
-    Api().comment.remove(id)
-    refreshData()
+  const onAddComment = (obj: CommentType) => {
+    setComments((prev) => [...prev, obj])
   }
 
-  const sendHandler = async () => {
+  const onRemoveComment = (id: string) => {
+    setComments((prev) => prev.filter((obj) => obj._id !== id))
+  }
+
+  const handleClickRemove = async (id: string) => {
     try {
-      const newsItem = id
-
-      const comment = {
-        text,
-        newsItem,
-      }
-
-      await Api().comment.create(comment)
-
-      refreshData()
-
-      setText('')
+      await Api().comment.remove(id)
+      onRemoveComment(id)
     } catch (err) {
-      console.warn(err)
-      alert('Failed to post comment')
+      console.warn('Error while removing comment', err)
+      alert('Failed to remove comment')
     }
   }
 
@@ -48,27 +44,19 @@ const Comments: React.FC<CommentsProps> = ({ id, newsComments, refreshData }) =>
 
   return (
     <>
-      {newsComments.map((comment) => (
+      {comments.map((comment) => (
         <div className={styles.comment} key={comment._id}>
           <Avatar variant='rounded' className={styles.avatar} src={comment.user?.avatarURL} />
           <div className={styles.text}>{comment.text}</div>
           <div className={styles.createdAt}>{formatDate(comment.createdAt)}</div>
           {comment._id && (
-            <button className={styles.delete} onClick={() => handleDelete(comment._id)}>
+            <button className={styles.delete} onClick={() => handleClickRemove(comment._id)}>
               <DeleteIcon />
             </button>
           )}
         </div>
       ))}
-      <TextField
-        className={styles.commentInput}
-        id='commentField'
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-      <Button color='inherit' onClick={sendHandler}>
-        Send
-      </Button>
+      {isAuth && <AddCommentForm newsItem={newsItem} onSuccessAdd={onAddComment} />}
     </>
   )
 }
