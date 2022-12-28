@@ -1,3 +1,5 @@
+import Head from 'next/head'
+
 import Categories from '../components/Categories'
 import Discover from '../components/Discover'
 import Heading from '../components/Heading'
@@ -13,6 +15,9 @@ import styles from '../styles/Main.module.scss'
 const Main = ({ news }) => {
   return (
     <div className={styles.wrapper}>
+      <Head>
+        <title>Discussion</title>
+      </Head>
       <div className={styles.main}>
         <Highlights news={news} />
       </div>

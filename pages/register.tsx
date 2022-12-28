@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Api } from '../utils/api'
 
 import styles from '../styles/AuthPage.module.scss'
+import Head from 'next/head'
 
 const RegisterPage = () => {
   const { register, handleSubmit } = useForm({
@@ -20,6 +21,9 @@ const RegisterPage = () => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Sign up</title>
+      </Head>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label className={styles.label}>

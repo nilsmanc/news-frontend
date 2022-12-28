@@ -7,6 +7,7 @@ import { Api } from '../utils/api'
 import Link from 'next/link'
 
 import styles from '../styles/AuthPage.module.scss'
+import Head from 'next/head'
 
 const LoginPage = () => {
   const dispatch = useAppDispatch()
@@ -31,6 +32,9 @@ const LoginPage = () => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Sign in</title>
+      </Head>
       <h1>Sign In</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label className={styles.label}>
