@@ -50,7 +50,7 @@ const Comments: React.FC<CommentsProps> = ({ newsItem }) => {
           <div className={styles.text}>{comment.text}</div>
           <div className={styles.createdAt}>{formatDate(comment.createdAt)}</div>
           <div className={styles.username}>{comment.user.username}</div>
-          {authData._id === comment.user._id && (
+          {authData?._id === comment.user._id && (
             <button className={styles.delete} onClick={() => handleClickRemove(comment._id)}>
               <DeleteIcon />
             </button>
