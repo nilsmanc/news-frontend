@@ -1,13 +1,14 @@
 .comment {
   display: grid;
   grid-template-areas:
-    'a c d'
-    'a t d';
-  grid-template-columns: 100px 5fr;
+    'a u c d'
+    'a t t d';
+  grid-template-columns: 80px 120px 5fr;
   margin-bottom: 20px;
   box-shadow: 0 4px 6px -2px gray;
   border-radius: 3px;
   min-height: 70px;
+  padding: 10px;
 }
 
 .avatar {
@@ -23,14 +24,27 @@
   justify-self: end;
   transition: width 0.5s ease;
   width: 50px;
+  margin: 10px;
   cursor: pointer;
   &:hover {
     width: 70px;
+  }
+
+  @media (max-width: 768px) {
+    height: 50px;
+    align-self: center;
   }
 }
 
 .text {
   grid-area: t;
+}
+
+.username {
+  grid-area: u;
+  font-size: 14px;
+  align-self: center;
+  font-weight: 500;
 }
 
 .createdAt {

@@ -4,6 +4,7 @@ export type NewsType = {
   text: string
   image: string
   category: string
+  date: string
 }
 
 export type UserType = {

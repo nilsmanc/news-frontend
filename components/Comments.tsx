@@ -15,7 +15,7 @@ type CommentsProps = {
 }
 
 const Comments: React.FC<CommentsProps> = ({ newsItem }) => {
-  const isAuth = useSelector(authDataSelector)
+  const authData = useSelector(authDataSelector)
   const { comments, setComments } = useComments(newsItem)
   console.log(comments)
 
@@ -49,14 +49,15 @@ const Comments: React.FC<CommentsProps> = ({ newsItem }) => {
           <Avatar variant='rounded' className={styles.avatar} src={comment.user?.avatarURL} />
           <div className={styles.text}>{comment.text}</div>
           <div className={styles.createdAt}>{formatDate(comment.createdAt)}</div>
-          {comment._id && (
+          <div className={styles.username}>{comment.user.username}</div>
+          {authData._id === comment.user._id && (
             <button className={styles.delete} onClick={() => handleClickRemove(comment._id)}>
               <DeleteIcon />
             </button>
           )}
         </div>
       ))}
-      {isAuth && <AddCommentForm newsItem={newsItem} onSuccessAdd={onAddComment} />}
+      {authData && <AddCommentForm newsItem={newsItem} onSuccessAdd={onAddComment} />}
     </>
   )
 }

@@ -2,42 +2,65 @@
   display: grid;
   grid-template-areas:
     'i t'
-    'i e';
+    'i d';
   text-align: center;
   justify-items: start;
   background-color: white;
   color: black;
-
+  height: 200px;
   @media (max-width: 400px) {
-    grid-template-areas:
-      'i'
-      't'
-      'e';
-    grid-template-columns: 1fr;
+    height: 100px;
     margin-bottom: 20px;
   }
 }
 
 .image {
   grid-area: i;
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
 
   @media (max-width: 400px) {
-    width: 300px;
+    width: 100px;
+    height: 100px;
   }
 }
 
 .title {
   grid-area: t;
   margin: 20px;
-  font-size: 40px;
-}
-
-.text {
-  grid-area: e;
-  margin: 0 20px;
+  font-size: 25px;
   text-align: justify;
+  font-weight: 500;
 
   @media (max-width: 768px) {
-    margin: 20px;
+    font-size: 18px;
   }
+
+  @media (max-width: 530px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 10px;
+  }
+}
+
+.date {
+  grid-area: d;
+  color: #868585;
+  font-size: 15px;
+  padding: 20px;
+  vertical-align: middle;
+  @media (max-width: 400px) {
+    display: none;
+  }
+}
+
+.date svg {
+  vertical-align: bottom;
+}
+
+.date span {
+  margin-left: 5px;
 }

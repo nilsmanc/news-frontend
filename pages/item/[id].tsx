@@ -1,9 +1,11 @@
 import Image from 'next/image'
+import Head from 'next/head'
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
+
 import Comments from '../../components/Comments'
 import { Api } from '../../utils/api'
 
 import styles from '../../styles/Info.module.scss'
-import Head from 'next/head'
 
 const Info = ({ newsItem }) => {
   return (
@@ -11,8 +13,12 @@ const Info = ({ newsItem }) => {
       <Head>
         <title>{newsItem.title}</title>
       </Head>
-      <Image className={styles.image} src={newsItem.image} width={500} height={500} alt='image' />
+      <Image className={styles.image} src={newsItem.image} width={2000} height={1000} alt='image' />
       <h2 className={styles.title}>{newsItem.title}</h2>
+      <div className={styles.date}>
+        <CalendarMonthIcon color='disabled' />
+        <span>{newsItem.date}</span>
+      </div>
       <p className={styles.text}>{newsItem.text}</p>
       <div className={styles.comments}>
         <Comments newsItem={newsItem._id} />

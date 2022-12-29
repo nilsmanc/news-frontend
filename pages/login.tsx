@@ -8,8 +8,11 @@ import Link from 'next/link'
 
 import styles from '../styles/AuthPage.module.scss'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 const LoginPage = () => {
+  const router = useRouter()
+
   const dispatch = useAppDispatch()
   const onSubmit = async (values) => {
     const data = await Api().user.login(values)
@@ -20,6 +23,8 @@ const LoginPage = () => {
       maxAge: 30 * 24 * 60 * 60,
       path: '/',
     })
+
+    router.push('/')
   }
 
   const { register, handleSubmit } = useForm({

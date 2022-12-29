@@ -5,8 +5,11 @@ import { Api } from '../utils/api'
 
 import styles from '../styles/AuthPage.module.scss'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 const RegisterPage = () => {
+  const router = useRouter()
+
   const { register, handleSubmit } = useForm({
     defaultValues: {
       username: '',
@@ -17,6 +20,7 @@ const RegisterPage = () => {
 
   const onSubmit = async (values) => {
     await Api().user.register(values)
+    router.push('/login')
   }
 
   return (

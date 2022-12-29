@@ -3,21 +3,13 @@
   padding: 0 50px;
   display: grid;
   grid-template-areas:
-    'i t'
-    'i e'
-    'c c';
+    'i'
+    'g'
+    't'
+    'e'
+    'c';
   grid-gap: 50px;
-  grid-template-rows: 1fr 5fr;
-
-  @media (max-width: 1280px) {
-    grid-template-areas:
-      'i'
-      't'
-      'e'
-      'c';
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 50px;
-  }
+  grid-template-rows: 1fr 20px;
 }
 
 .title {
@@ -26,17 +18,38 @@
 
 .text {
   grid-area: e;
+  text-align: justify;
 }
 
 .image {
   grid-area: i;
+  max-width: 100%;
+
+  height: 60vh;
+  object-fit: cover;
+
   @media (max-width: 1280px) {
     width: 100%;
-    height: 300px;
     object-fit: cover;
+    height: 300px;
   }
 }
 
 .comments {
   grid-area: c;
+}
+
+.date {
+  grid-area: g;
+  color: #868585;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.date svg {
+  vertical-align: bottom;
+}
+
+.date span {
+  margin-left: 5px;
 }

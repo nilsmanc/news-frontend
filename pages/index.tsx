@@ -32,6 +32,7 @@ const Main = ({ news }) => {
                 text={item.text}
                 id={item._id}
                 image={item.image}
+                date={item.date}
               />
             </div>
           )

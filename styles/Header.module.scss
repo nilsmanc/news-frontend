@@ -1,7 +1,7 @@
 .wrapper {
   display: grid;
   grid-template-areas: 'l a';
-  grid-template-columns: 5fr 1fr;
+  grid-template-columns: 5fr;
   align-items: center;
   width: 100%;
   background-color: black;
@@ -23,6 +23,16 @@
 
 .links {
   grid-area: l;
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.menu {
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
 }
 
 .auth {
@@ -30,4 +40,8 @@
   display: flex;
   align-items: center;
   margin-right: 40px;
+}
+
+.username {
+  margin-bottom: 5px;
 }
