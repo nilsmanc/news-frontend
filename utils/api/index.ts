@@ -17,7 +17,7 @@ export const Api = (ctx?: NextPageContext | GetServerSidePropsContext): ApiRetur
   const token = cookies.token
 
   const instance = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: 'https://news-backend-steel.vercel.app',
     headers: {
       Authorization: token,
       Accept: 'application/json',

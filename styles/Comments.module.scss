@@ -14,8 +14,8 @@
 .avatar {
   grid-area: a;
   margin: 10px;
-  width: 50px;
-  height: 50px;
+  width: 50px !important;
+  height: 50px !important;
   align-self: center;
 }
 
