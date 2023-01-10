@@ -1,8 +1,14 @@
 import Link from 'next/link'
 
+import { NewsType } from '../types'
+
 import styles from '../styles/NewsCard.module.scss'
 
-const NewsCard = ({ item: { _id, image, category, title } }) => {
+type NewsCardProps = {
+  item: NewsType
+}
+
+const NewsCard: React.FC<NewsCardProps> = ({ item: { _id, image, category, title } }) => {
   return (
     <div className={styles.box}>
       <div className={styles.img}>

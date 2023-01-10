@@ -8,7 +8,7 @@ export const NewsApi = (instance: AxiosInstance) => ({
     return data
   },
 
-  async getOne(id: number) {
+  async getOne(id: string) {
     const { data } = await instance.get<NewsType>(`/news/${id}`)
     return data
   },

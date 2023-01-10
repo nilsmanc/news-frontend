@@ -1,5 +1,8 @@
 import { setCookie } from 'nookies'
 import { useForm } from 'react-hook-form'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { NextPage } from 'next'
 
 import { setUserData } from '../redux/slices/auth'
 import { useAppDispatch } from '../redux/store'
@@ -7,10 +10,8 @@ import { Api } from '../utils/api'
 import Link from 'next/link'
 
 import styles from '../styles/AuthPage.module.scss'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
 
-const LoginPage = () => {
+const LoginPage: NextPage = () => {
   const router = useRouter()
 
   const dispatch = useAppDispatch()

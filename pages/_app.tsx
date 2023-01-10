@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
+import Head from 'next/head'
 
 import { wrapper } from '../redux/store'
 import Layout from '../components/Layout'
@@ -8,7 +9,6 @@ import { Api } from '../utils/api'
 
 import styles from '../styles/App.module.scss'
 import '../styles/globals.scss'
-import Head from 'next/head'
 
 const App = ({ Component, ...rest }: AppProps) => {
   const { store, props } = wrapper.useWrappedStore(rest)

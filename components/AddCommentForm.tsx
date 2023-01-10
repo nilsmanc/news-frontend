@@ -2,10 +2,16 @@ import { Button, Input } from '@mui/material'
 import { useState } from 'react'
 
 import { Api } from '../utils/api'
+import { CommentType } from '../types'
 
 import styles from '../styles/AddCommentForm.module.scss'
 
-export const AddCommentForm = ({ newsItem, onSuccessAdd }) => {
+type AddCommentFormProps = {
+  newsItem: string
+  onSuccessAdd: (obj: CommentType) => void
+}
+
+export const AddCommentForm: React.FC<AddCommentFormProps> = ({ newsItem, onSuccessAdd }) => {
   const [clicked, setClicked] = useState(false)
   const [isLoading, setLoading] = useState(false)
   const [text, setText] = useState('')

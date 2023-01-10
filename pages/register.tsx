@@ -1,13 +1,14 @@
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { NextPage } from 'next'
 
 import { Api } from '../utils/api'
 
 import styles from '../styles/AuthPage.module.scss'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
 
-const RegisterPage = () => {
+const RegisterPage: NextPage = () => {
   const router = useRouter()
 
   const { register, handleSubmit } = useForm({

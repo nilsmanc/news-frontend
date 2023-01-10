@@ -10,6 +10,7 @@ import { destroyCookie } from 'nookies'
 import styles from '../styles/Header.module.scss'
 
 const links = ['Home', 'Culture', 'Politics', 'Sport', 'Reviews']
+
 const Header = () => {
   const dispatch = useAppDispatch()
   const authData = useSelector(authDataSelector)

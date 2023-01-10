@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { GetServerSideProps, NextPage } from 'next'
 
 import Categories from '../components/Categories'
 import Discover from '../components/Discover'
@@ -12,7 +13,11 @@ import { Api } from '../utils/api'
 
 import styles from '../styles/Main.module.scss'
 
-const Main = ({ news }) => {
+type MainProps = {
+  news: NewsType[]
+}
+
+const Main: NextPage<MainProps> = ({ news }) => {
   return (
     <div className={styles.wrapper}>
       <Head>
@@ -55,7 +60,7 @@ const Main = ({ news }) => {
 
 export default Main
 
-export const getServerSideProps = async (ctx) => {
+export const getServerSideProps = async (ctx: GetServerSideProps) => {
   try {
     const news = await Api().news.getAll()
 

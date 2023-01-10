@@ -1,13 +1,19 @@
 import Image from 'next/image'
 import Head from 'next/head'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
+import { GetServerSidePropsContext, NextPage } from 'next'
 
 import Comments from '../../components/Comments'
 import { Api } from '../../utils/api'
+import { NewsType } from '../../types'
 
 import styles from '../../styles/Info.module.scss'
 
-const Info = ({ newsItem }) => {
+type InfoProps = {
+  newsItem: NewsType
+}
+
+const Info: NextPage<InfoProps> = ({ newsItem }) => {
   return (
     <div className={styles.wrapper}>
       <Head>
@@ -29,9 +35,9 @@ const Info = ({ newsItem }) => {
 
 export default Info
 
-export const getServerSideProps = async (ctx) => {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
-    const id = ctx.params.id
+    const id = ctx.params.id as string
     const newsItem = await Api(ctx).news.getOne(id)
 
     return {

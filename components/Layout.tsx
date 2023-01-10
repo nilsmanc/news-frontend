@@ -7,11 +7,11 @@ import Footer from './Footer'
 
 import styles from '../styles/Layout.module.scss'
 
-interface Props {
+type LayoutProps = {
   children?: ReactNode
 }
 
-const Layout = ({ children }: Props) => {
+const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Link href={'/'}>

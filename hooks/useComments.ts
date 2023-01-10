@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react'
 
 import { Api } from '../utils/api'
+import { CommentType } from '../types'
 
-export const useComments = (newsId?: string) => {
-  const [comments, setComments] = useState([])
+type UseCommentsProps = {
+  setComments: React.Dispatch<React.SetStateAction<CommentType[]>>
+  comments: CommentType[]
+}
+
+export const useComments = (newsId?: string): UseCommentsProps => {
+  const [comments, setComments] = useState<CommentType[]>([])
   useEffect(() => {
     ;(async () => {
       try {

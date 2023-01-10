@@ -17,7 +17,6 @@ type CommentsProps = {
 const Comments: React.FC<CommentsProps> = ({ newsItem }) => {
   const authData = useSelector(authDataSelector)
   const { comments, setComments } = useComments(newsItem)
-  console.log(comments)
 
   const onAddComment = (obj: CommentType) => {
     setComments((prev) => [...prev, obj])
