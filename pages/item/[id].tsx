@@ -2,6 +2,9 @@ import Image from 'next/image'
 import Head from 'next/head'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import { GetServerSidePropsContext, NextPage } from 'next'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import EmailIcon from '@mui/icons-material/Email'
+import PinterestIcon from '@mui/icons-material/Pinterest'
 
 import Comments from '../../components/Comments'
 import { Api } from '../../utils/api'
@@ -21,6 +24,20 @@ const Info: NextPage<InfoProps> = ({ newsItem }) => {
       </Head>
       <Image className={styles.image} src={newsItem.image} width={2000} height={1000} alt='image' />
       <h2 className={styles.title}>{newsItem.title}</h2>
+      <div className={styles.social}>
+        <div className={styles.box}>
+          <TwitterIcon />
+          <span>Tweet</span>
+        </div>
+        <div className={styles.box}>
+          <PinterestIcon />
+          <span>Share Pin</span>
+        </div>
+        <div className={styles.box}>
+          <EmailIcon />
+          <span>Send Email</span>
+        </div>
+      </div>
       <div className={styles.date}>
         <CalendarMonthIcon color='disabled' />
         <span>{newsItem.date}</span>
